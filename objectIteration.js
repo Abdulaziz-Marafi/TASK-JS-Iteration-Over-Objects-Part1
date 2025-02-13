@@ -35,20 +35,26 @@ const movies = [
 // Q1: Write a `hasKey` function that takes two arguments, an object and a key.
 // The function should return true if the object contains  the specified key, and false otherwise.
 function hasKey(obj, key) {
-  // write your code here...
+  return obj[key] ? true : false;
 }
 
 // Q2: Write a `printMovieTitles` function that accepts an array of objects called 'movies'
 // and iterates through it to print the titles of all the movies.
 function printMovieTitles(movies) {
-  // write your code here...
+  movies.forEach((element) => {
+    console.log(element.title);
+  });
 }
 
 // Q3: Write a `countMoviesByYear` function that accepts an array of objects called 'movies'
 // and a year
 // and returns the number of movies that were released in that year.
 function countMoviesByYear(movies, year) {
-  // write your code here...
+  let count = 0;
+  movies.forEach((element) => {
+    element.year == year ? count++ : count;
+  });
+  return count;
 }
 
 // Q4: Write a `updateMovieGenre` function that accepts a title and a new genre
@@ -56,7 +62,11 @@ function countMoviesByYear(movies, year) {
 // then returns the modified array of movies.
 // Hint: use array iterator .find
 function updateMovieGenre(movies, title, newGenre) {
-  // write your code here...
+  let found = movies.find((movie) => movie.title == title);
+  if (found) {
+    found.genre = newGenre;
+  }
+  return movies;
 }
 
 module.exports = {
